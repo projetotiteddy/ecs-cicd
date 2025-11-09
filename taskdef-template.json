@@ -1,0 +1,23 @@
+{
+  "family": "aws-teste-task",
+  "networkMode": "awsvpc",
+  "cpu": "256",
+  "memory": "512",
+  "requiresCompatibilities": ["FARGATE"],
+  "executionRoleArn": "arn:aws:iam::320915182827:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "web",
+      "image": "REPLACED_BY_CI",
+      "portMappings": [{ "containerPort": 80, "protocol": "tcp" }],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/aws-teste-web",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
